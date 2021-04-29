@@ -1,0 +1,29 @@
+---
+version: '3'
+
+# Run all the containers in the same Docker network as Couchbase.
+# This network is created by "setup-couchbase.sh"
+networks:
+  default:
+    external:
+      name: sandbox
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.7.1
+    hostname: elasticsearch
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+    environment:
+      "discovery.type": single-node
+
+  connect:
+    build: couchbase-connector
+    hostname: connect
+    container_name: connector
+    depends_on:
+      - elasticsearch
+    ports:
+      - "31415:31415"
+    #environment:
