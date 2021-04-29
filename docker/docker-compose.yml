@@ -2,7 +2,7 @@
 version: '3'
 
 # Run all the containers in the same Docker network as Couchbase.
-# This network is created by "setup-couchbase.sh"
+# This network is created by "run-couchbase.sh"
 networks:
   default:
     external:
