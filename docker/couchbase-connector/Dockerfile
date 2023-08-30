@@ -2,7 +2,7 @@ FROM registry.access.redhat.com/ubi7/ubi:7.6
 
 RUN yum update -y && yum install -y unzip java-11-openjdk-headless && yum clean all
 
-ARG ConnectorVersion=4.2.10
+ARG ConnectorVersion=4.4.6
 ARG ConnectorArchiveBase=couchbase-elasticsearch-connector-$ConnectorVersion
 ARG ConnectorArchive=$ConnectorArchiveBase.zip
 ARG ConnectorUrl=https://packages.couchbase.com/clients/connectors/elasticsearch/$ConnectorVersion/$ConnectorArchive
